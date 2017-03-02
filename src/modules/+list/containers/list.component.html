@@ -1,6 +1,6 @@
 <h2>List Feature Domain</h2>
-<button *ngIf="!(listHasData$ | async)" (click)="onLoadItems()">Load Items</button>
-<button *ngIf="(listHasData$ | async)" (click)="onLoadMoreItems()">Load More Items</button>
+<button class="btn btn-info" *ngIf="!(listHasData$ | async)" (click)="onLoadItems()">Load Items</button>
+<button class="btn btn-info" *ngIf="(listHasData$ | async)" (click)="onLoadMoreItems()">Load More Items</button>
 <br><br>
 <section class="row" *ngIf="listHasData$ | async">
   <div class="col-4" *ngFor="let user of (usersData$ | async)">
