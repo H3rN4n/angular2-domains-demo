@@ -1,21 +1,13 @@
 import { State } from 'ngrx-domains';
 
 State.list = {
-  usersData: [{
-    token: '',
-    name: '',
-    img: ''
-  }],
+  usersData: [{}],
   listHasData: false
 };
 
 declare module 'ngrx-domains' {
   export interface ListState {
-    usersData: [{
-      token: String,
-      name: String,
-      img: String
-    }];
+    usersData: [any];
     listHasData: boolean;
   }
 

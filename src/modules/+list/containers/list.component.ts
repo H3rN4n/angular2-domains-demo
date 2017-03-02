@@ -24,5 +24,9 @@ export class ListComponent implements OnInit {
   onLoadItems() {
     this.store.dispatch(new Actions.list.ListLoadStartAction());
   }
+  
+  onLoadMoreItems() {
+    this.store.dispatch(new Actions.list.ListLoadMoreStartAction());
+  }
 
 }
