@@ -34,6 +34,8 @@ let _reducer: ActionReducer<State>;
 
 // Support lazy loading, re-build reducer tree when a new domain is added
 tableCreated$.subscribe( (domain: string) => {
+  console.log('Reducer updated - new domain: ' + domain);
+
   _reducer = environment.production
     ? combineReducers(getReducers())
     : compose(storeFreeze, combineReducers)(getReducers());

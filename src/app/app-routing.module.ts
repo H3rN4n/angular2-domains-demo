@@ -14,8 +14,8 @@ export const routes: Routes = [
     component: LandingComponent
   },
   {
-    path: 'login',
-    loadChildren: '../modules/+login/login.module#LoginModule'
+    path: 'list',
+    loadChildren: '../modules/+list/list.module#ListModule'
   },
   {
     path: '**',

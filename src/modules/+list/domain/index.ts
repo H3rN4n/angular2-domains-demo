@@ -6,6 +6,6 @@ import './queries';
 
 import { reducer } from './reducer';
 
-createDomain('login', reducer);
+createDomain('list', reducer);
 
-export { LoginEffects } from './effects';
+export { ListEffects } from './effects';

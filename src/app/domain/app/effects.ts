@@ -10,6 +10,8 @@ export class AppEffects {
 
   constructor(
     private actions$: Actions,
-  ) { }
+  ) {
+    console.log('AppEffects');
+  }
 
 }

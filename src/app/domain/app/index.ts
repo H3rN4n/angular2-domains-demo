@@ -1,5 +1,4 @@
 import { createDomain } from 'ngrx-domains';
-import './model';
 import './state';
 
 import { reducer } from './reducer';
