@@ -4,6 +4,7 @@ State.list = {
   usersData: {
     items: [{}]
   },
+  videoSelected: {},
   listHasData: false
 };
 
@@ -12,6 +13,7 @@ declare module 'ngrx-domains' {
     usersData: {
       items: [any]
     };
+    videoSelected: any;
     listHasData: boolean;
   }
 

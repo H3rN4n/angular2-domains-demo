@@ -1,5 +1,5 @@
 import { Actions, Model, Queries, State } from 'ngrx-domains';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
@@ -9,7 +9,7 @@ import { Store } from '@ngrx/store';
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'list.component.html'
 })
-export class ListComponent implements OnInit {
+export class ListComponent {
   public usersData$: Observable<[any]>;
   public listHasData$: Observable<boolean>;
 
@@ -20,7 +20,9 @@ export class ListComponent implements OnInit {
     this.listHasData$ = store.select(Queries.list.getListStatus);
   }
 
-  ngOnInit() { }
+  onWatchVideo(video) {
+    this.store.dispatch(new Actions.list.ListSetSelectedVideoAction(video));
+  }
 
   onLoadItems() {
     this.store.dispatch(new Actions.list.ListLoadStartAction());

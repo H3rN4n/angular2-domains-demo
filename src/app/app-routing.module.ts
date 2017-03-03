@@ -18,6 +18,10 @@ export const routes: Routes = [
     loadChildren: '../modules/+list/list.module#ListModule'
   },
   {
+    path: 'detail',
+    loadChildren: '../modules/+detail/detail.module#DetailModule'
+  },
+  {
     path: '**',
     component: NotFoundPageComponent
   }

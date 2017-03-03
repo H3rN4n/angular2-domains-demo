@@ -4,7 +4,7 @@
 <hr>
 <section class="row" *ngIf="listHasData$ | async">
   <div class="col-4" *ngFor="let data of (usersData$ | async)?.items">
-    <app-card [data]="data"></app-card>
+    <app-card [data]="data" (select)="onWatchVideo($event)"></app-card>
   </div>
 </section>
 <hr>

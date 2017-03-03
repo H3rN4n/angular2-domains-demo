@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Action } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
@@ -19,7 +20,7 @@ import { results } from '../data';
 export class ListEffects {
 
   @Effect()
-  loadListAction$: Observable<Action> = this.actions$
+  loadListEffect$: Observable<Action> = this.actions$
     .ofType(ActionTypes.LIST_LOAD_START)
     .map((action) => {
       return action;
@@ -29,7 +30,7 @@ export class ListEffects {
     });
 
   @Effect()
-  loadMoreListAction$: Observable<Action> = this.actions$
+  loadMoreListEffect$: Observable<Action> = this.actions$
     .ofType(ActionTypes.LIST_LOAD_MORE_START)
     .map((action) => {
       return action;
@@ -38,9 +39,31 @@ export class ListEffects {
       return Observable.of(new DomainActions.list.ListLoadCompleteAction(results()));
     });
 
+  @Effect()
+  videoSelectedEffect$: Observable<Action> = this.actions$
+    .ofType(ActionTypes.LIST_SELECT_VIDEO)
+    .map((action) => {
+      return action;
+    })
+    .switchMap(action => {
+      return Observable.of(new DomainActions.list.ListGoToVideoDetailAction(action.payload.id.videoId));
+    });
+
+  @Effect()
+  goToDetailVideoEffect$: Observable<Action> = this.actions$
+    .ofType(ActionTypes.LIST_GO_TO_DETAIL_VIDEO)
+    .map((action) => {
+      return action;
+    })
+    .switchMap(action => {
+      this.router.navigateByUrl('/detail/' + action.payload);
+      return Observable.of({ 'type': 'LIST_GO_TO_DETAIL_VIDEO' });
+    });
+
   constructor(
     private actions$: Actions,
-    private listService: ListService
+    private listService: ListService,
+    private router: Router
   ) {
     console.log('ListEffects');
   }

@@ -9,6 +9,7 @@ import { Model } from 'ngrx-domains';
 })
 export class CardComponent {
     @Input() data: any;
+    @Output() select = new EventEmitter<any>();
 
     get title() {
         return this.data.snippet.title;
