@@ -12,7 +12,7 @@ import 'rxjs/add/operator/first';
 
 import { ListRoutingModule } from './list-routing.module';
 import { ListComponent } from './containers/list.component';
-import { ProfileComponent } from './components/profile.component';
+import { CardComponent } from './components/card.component';
 
 import './domain';
 
@@ -29,7 +29,7 @@ import './domain';
     ],
     declarations: [
         ListComponent,
-        ProfileComponent
+        CardComponent
     ]
 })
 

@@ -1,11 +1,14 @@
-<h2>List Feature Domain</h2>
-<button class="btn btn-info" *ngIf="!(listHasData$ | async)" (click)="onLoadItems()">Load Items</button>
-<br><br>
+<nav class="navbar navbar-light bg-faded">
+  <span class="navbar-brand">List Feature Domain</span>
+</nav>
+<hr>
 <section class="row" *ngIf="listHasData$ | async">
-  <div class="col-4" *ngFor="let user of (usersData$ | async)">
-    <app-profile [user]="user"></app-profile>
+  <div class="col-4" *ngFor="let data of (usersData$ | async)?.items">
+    <app-card [data]="data"></app-card>
   </div>
 </section>
-<br><br>
-<button class="btn btn-info" *ngIf="(listHasData$ | async)" (click)="onLoadMoreItems()">Load More Items</button>
-<br><br>
+<hr>
+<nav class="navbar navbar-light bg-faded">
+  <button class="btn btn-info" *ngIf="!(listHasData$ | async)" (click)="onLoadItems()">Load Items</button>
+  <button class="btn btn-info" *ngIf="(listHasData$ | async)" (click)="onLoadMoreItems()">Load More Items</button>
+</nav>

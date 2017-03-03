@@ -13,36 +13,10 @@ import 'rxjs/add/operator/switchMap';
 import { ActionTypes } from './actions';
 
 import { ListService } from '../list.service';
-
-const usersData = [{
-  token: 'token',
-  name: 'Hernán 1',
-  img: 'https://pbs.twimg.com/profile_images/3123296673/f6a685a65ce2a1b5bfdd45108b714718_400x400.jpeg'
-},
-{
-  token: 'token',
-  name: 'Hernán 2',
-  img: 'https://pbs.twimg.com/profile_images/3123296673/f6a685a65ce2a1b5bfdd45108b714718_400x400.jpeg'
-},
-{
-  token: 'token',
-  name: 'Hernán 3',
-  img: 'https://pbs.twimg.com/profile_images/3123296673/f6a685a65ce2a1b5bfdd45108b714718_400x400.jpeg'
-},
-{
-  token: 'token',
-  name: 'Hernán 4',
-  img: 'https://pbs.twimg.com/profile_images/3123296673/f6a685a65ce2a1b5bfdd45108b714718_400x400.jpeg'
-}];
+import { results } from '../data';
 
 @Injectable()
 export class ListEffects {
-  constructor(
-    private actions$: Actions,
-    private listService: ListService
-  ) {
-    console.log('ListEffects');
-  }
 
   @Effect()
   loadListAction$: Observable<Action> = this.actions$
@@ -51,9 +25,7 @@ export class ListEffects {
       return action;
     })
     .switchMap(action => {
-      // return this.listService.loadItems().first()
-      //   .map(data => new DomainActions.list.ListLoadCompleteAction(data))
-      return Observable.of(new DomainActions.list.ListLoadCompleteAction(usersData));
+      return Observable.of(new DomainActions.list.ListLoadCompleteAction(results()));
     });
 
   @Effect()
@@ -63,10 +35,13 @@ export class ListEffects {
       return action;
     })
     .switchMap(action => {
-      // return this.listService.loadItems().first()
-      //   .map(data => new DomainActions.list.ListLoadCompleteAction(data))
-      return Observable.of(new DomainActions.list.ListLoadCompleteAction(usersData));
+      return Observable.of(new DomainActions.list.ListLoadCompleteAction(results()));
     });
 
-
+  constructor(
+    private actions$: Actions,
+    private listService: ListService
+  ) {
+    console.log('ListEffects');
+  }
 }
